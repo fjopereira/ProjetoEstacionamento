@@ -1,12 +1,30 @@
 
-<H2>Updating Pessoa: {{ pessoa }} </H2>
+{% extends 'base.html' %}
 
+{% load bootstrap %}
 
-<form action="{% url 'core_pessoa_update' pessoa.id %}" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Salvar</button>
-</form>
+{% block main %}
 
+    <div class="row">
 
-<a href="{% url 'core_pessoa_delete' pessoa.id %}">Deletar</a>
+        <div class="col">
+
+            <H2>Updating Pessoa: {{ pessoa }} </H2>
+
+            <form action="{% url 'core_pessoa_update' pessoa.id %}" method="POST">
+
+                {% csrf_token %}
+
+                {{ form|bootstrap }}
+
+                <button type="submit" class="btn btn-primary">Salvar</button>
+
+                <a href="{% url 'core_pessoa_delete' pessoa.id %}" class="btn btn-danger">Deletar</a>
+
+            </form>
+
+        </div>
+
+    </div>
+    
+{% endblock main %}

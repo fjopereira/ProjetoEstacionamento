@@ -1,8 +1,26 @@
 
-<H2>Tem certeza que quer deletar: {{ veiculo }} </H2>
+{% extends 'base.html' %}
+
+{% block main %}
+
+    <div class="row">
+
+        <div class="col">
+
+            <H2>Tem certeza que quer deletar: {{ veiculo }} </H2>
 
 
-<form action="{% url 'core_veiculo_delete' veiculo.id %}" method="POST">
-    {% csrf_token %}
-    <button type="submit">Deletar</button>
-</form>
+            <form action="{% url 'core_veiculo_delete' veiculo.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Deletar</button>
+            </form>
+
+
+        </div>
+                
+
+    </div>
+
+
+
+{% endblock main %}

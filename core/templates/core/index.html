@@ -1,1 +1,12 @@
-{{ mensagem }}
+{% extends 'base.html' %}
+
+{% block main %}
+    
+    <div class="row">
+        <div class="col">
+            <h1>Seja Bem vindo ao sistema</h1>
+            <a href="/admin/login/?next=/admin/">Click aqui para entrar</a>
+        </div>
+    </div>
+
+{% endblock main %}

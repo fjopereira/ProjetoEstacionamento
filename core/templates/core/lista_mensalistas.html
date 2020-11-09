@@ -1,17 +1,38 @@
 
-<H2>Lista Mensalistas</H2>
+{% extends 'base.html' %}
 
-<ul>
-{% for mensalista in lista_mensalistas %}
-    <li>
-        <a href="{% url 'core_mensalista_update' mensalista.id %}"> {{ mensalista.veiculo }} - {{ mensalista.inicio }} </a>
-    </li>
-{% endfor %}
-</ul>
+{% load bootstrap %}
 
+{% block main %}
 
-<form action="{% url 'core_mensalista_novo' %}" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Cadastrar</button>
-</form>
+    <div class="row">
+
+        <div class="col-sm-12">
+            <H2>Lista Mensalistas</H2>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-6">
+            <ul>
+                {% for mensalista in lista_mensalistas %}
+                    <li>
+                        <a href="{% url 'core_mensalista_update' mensalista.id %}"> {{ mensalista.veiculo }} - {{ mensalista.inicio }} </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="col-sm-6">
+            <form action="{% url 'core_mensalista_novo' %}" method="POST">
+                {% csrf_token %}
+                {{ form|bootstrap }}
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </form>
+        </div>
+
+    </div>
+
+{% endblock main %}
