@@ -3,18 +3,57 @@
 
 {% load bootstrap %}
 
+{% block menu %}
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'core_home' %}">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Serviços</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'core_lista_pessoas' %}">Pessoas</a>
+            <a class="dropdown-item" href="{% url 'core_lista_veiculos' %}">Veiculos</a>
+            <a class="dropdown-item" href="{% url 'core_lista_movrotativos' %}">Rotativos</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item active" href="{% url 'core_lista_mensalistas' %}">Mensalistas</a>
+            <a class="dropdown-item" href="{% url 'core_lista_movmensalistas' %}">MovMensalistas</a>
+        </div>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#">Logout</a>
+        </li>
+    </ul>
+{% endblock menu %}
+
 {% block main %}
 
     <div class="row">
 
-        <div class="col-sm-12">
+        <table class="table">
+
             <H2>Lista Mensalistas</H2>
-        </div>
 
-    </div>
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">veiculo</th>
+                <th scope="col">inicio</th>
+                <th scope="col">valor_mes</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for mensalista in lista_mensalistas %} 
+              <tr>
+                <th scope="row">{{ mensalista.id }}</th>
+                <td>{{ mensalista.veiculo }}</td>
+                <td>{{ mensalista.inicio }}</td>
+                <td> R$ {{ mensalista.valor_mes }}</td>
+              </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <div class="row">
-
+        <!--
         <div class="col-sm-6">
             <ul>
                 {% for mensalista in lista_mensalistas %}
@@ -24,8 +63,12 @@
                 {% endfor %}
             </ul>
         </div>
-
+        -->
+        
         <div class="col-sm-6">
+
+            <H2>Cadastro</H2>
+
             <form action="{% url 'core_mensalista_novo' %}" method="POST">
                 {% csrf_token %}
                 {{ form|bootstrap }}

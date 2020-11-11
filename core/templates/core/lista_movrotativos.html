@@ -3,18 +3,65 @@
 
 {% load bootstrap %}
 
+{% block menu %}
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'core_home' %}">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Serviços</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="{% url 'core_lista_pessoas' %}">Pessoas</a>
+            <a class="dropdown-item" href="{% url 'core_lista_veiculos' %}">Veiculos</a>
+            <a class="dropdown-item active" href="{% url 'core_lista_movrotativos' %}">Rotativos</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'core_lista_mensalistas' %}">Mensalistas</a>
+            <a class="dropdown-item" href="{% url 'core_lista_movmensalistas' %}">MovMensalistas</a>
+        </div>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#">Logout</a>
+        </li>
+    </ul>
+{% endblock menu %}
+
 {% block main %}
 
     <div class="row">
 
-        <div class="col-sm-12">
-            <H2>Lista Mov Rotativos</H2>
+        <div class="col-sm-6">
+
+            <table class="table">
+
+                <H2>Lista MovRotativos</H2>
+
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">checkin</th>
+                    <th scope="col">checkout</th>
+                    <th scope="col">valor_hora</th>
+                    <th scope="col">veiculo</th>
+                    <th scope="col">pagamento</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for movrotativo in lista_movrotativos %}
+                  <tr>
+                    <th scope="row">{{ movrotativo.id }}</th>
+                    <td>{{ movrotativo.checkin }}</td>
+                    <td>{{ movrotativo.checkout }}</td>
+                    <td> R$ {{ movrotativo.valor_hora }}</td>
+                    <td>{{ movrotativo.veiculo }}</td>
+                    <td>{{ movrotativo.pagamento }}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
         </div>
 
-    </div>
-
-    <div class="row">
-
+        <!--
         <div class="col-sm-6">
             <ul>
                 {% for movrotativo in lista_movrotativos %}
@@ -24,8 +71,11 @@
                 {% endfor %}
             </ul>
         </div>
-
+        -->
         <div class="col-sm-6">
+
+            <H2>Cadastro</H2>
+
             <form action="{% url 'core_movmovrotativo_novo' %}" method="POST">
                 {% csrf_token %}
                 {{ form|bootstrap }}
