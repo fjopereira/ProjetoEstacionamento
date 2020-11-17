@@ -5,23 +5,44 @@
 
 {% block menu %}
     <ul class="nav nav-tabs">
+
         <li class="nav-item">
-        <a class="nav-link" href="{% url 'core_home' %}">Home</a>
+            <a class="nav-link" href="{% url 'core_home' %}">Home</a>
         </li>
+
+        {% if user.is_authenticated  %}
+
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Serviços</a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item active" href="{% url 'core_lista_pessoas' %}">Pessoas</a>
-            <a class="dropdown-item" href="{% url 'core_lista_veiculos' %}">Veiculos</a>
-            <a class="dropdown-item" href="{% url 'core_lista_movrotativos' %}">Rotativos</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{% url 'core_lista_mensalistas' %}">Mensalistas</a>
-            <a class="dropdown-item" href="{% url 'core_lista_movmensalistas' %}">MovMensalistas</a>
-        </div>
+
+            <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Serviços</a>
+            
+            <div class="dropdown-menu">
+                <a class="dropdown-item active" href="{% url 'core_lista_pessoas' %}">Pessoas</a>
+                <a class="dropdown-item" href="{% url 'core_lista_veiculos' %}">Veiculos</a>
+                <a class="dropdown-item" href="{% url 'core_lista_movrotativos' %}">Rotativos</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'core_lista_mensalistas' %}">Mensalistas</a>
+                <a class="dropdown-item" href="{% url 'core_lista_movmensalistas' %}">MovMensalistas</a>
+            </div>
+            
         </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">Logout</a>
-        </li>
+
+            <li class="nav-item">
+                <a class="nav-link disabled" href="">Ola, {{ user }}   </a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href=" {% url 'logout' %} ">Logout</a>
+            </li>
+
+        {% else %}
+
+            <li class="nav-item">
+                <a class="nav-link" href=" {% url 'login' %} ">Login</a>
+            </li>
+
+        {% endif %}
+
     </ul>
 {% endblock menu %}
 
@@ -49,6 +70,7 @@
                     <th scope="col">Nome</th>
                     <th scope="col">Endereço</th>
                     <th scope="col">Telefone</th>
+                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -58,6 +80,9 @@
                     <td>{{ pessoa.nome }}</td>
                     <td>{{ pessoa.endereco }}</td>
                     <td>{{ pessoa.telefone }}</td>
+                    <td>
+                        <a href="{% url 'core_pessoa_update' pessoa.id %}">Editar</a>
+                    </td>
                   </tr>
                 {% endfor %}
                 </tbody>

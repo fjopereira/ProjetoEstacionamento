@@ -2,39 +2,66 @@
 
 {% block menu %}
     <ul class="nav nav-tabs">
+
         <li class="nav-item">
-        <a class="nav-link active" href="{% url 'core_home' %}">Home</a>
-        </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Serviços</a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="{% url 'core_lista_pessoas' %}">Pessoas</a>
-            <a class="dropdown-item" href="{% url 'core_lista_veiculos' %}">Veiculos</a>
-            <a class="dropdown-item" href="{% url 'core_lista_movrotativos' %}">Rotativos</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{% url 'core_lista_mensalistas' %}">Mensalistas</a>
-            <a class="dropdown-item" href="{% url 'core_lista_movmensalistas' %}">MovMensalistas</a>
-        </div>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">Logout</a>
+            <a class="nav-link active" href="{% url 'core_home' %}">Home</a>
         </li>
 
-        <!-- Exemplo de um lick desabilitado
-        <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
-        -->
+        {% if user.is_authenticated  %}
 
+            <li class="nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Serviços</a>
+
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'core_lista_pessoas' %}">Pessoas</a>
+                    <a class="dropdown-item" href="{% url 'core_lista_veiculos' %}">Veiculos</a>
+                    <a class="dropdown-item" href="{% url 'core_lista_movrotativos' %}">Rotativos</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'core_lista_mensalistas' %}">Mensalistas</a>
+                    <a class="dropdown-item" href="{% url 'core_lista_movmensalistas' %}">MovMensalistas</a>
+                </div>
+
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link disabled" href="">Ola, {{ user }}   </a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href=" {% url 'logout' %} ">Logout</a>
+            </li>
+            
+            {% if user.get_username == 'admin'  %}   
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/login/?next=/admin/">ADMIN</a>
+                </li>
+                
+            {% endif %}
+
+        {% else %}
+
+            <li class="nav-item">
+                <a class="nav-link" href=" {% url 'login' %} ">Login</a>
+            </li>
+
+        {% endif %}
+            
     </ul>
 {% endblock menu %}
 
 {% block main %}
     
     <div class="row">
+
         <div class="col">
+
             <h1>Seja Bem vindo ao sistema</h1>
+
+            <!--
             <a href="/admin/login/?next=/admin/">Click aqui para entrar</a>
+            -->    
         </div>
     </div>
 

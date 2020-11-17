@@ -1,1 +1,1 @@
-web: gunicorn estacionamento.wsgi
+web: gunicorn estacionamento.wsgi --log-file -

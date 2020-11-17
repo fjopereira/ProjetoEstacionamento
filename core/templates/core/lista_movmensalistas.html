@@ -5,23 +5,44 @@
 
 {% block menu %}
     <ul class="nav nav-tabs">
+
         <li class="nav-item">
-        <a class="nav-link" href="{% url 'core_home' %}">Home</a>
+            <a class="nav-link" href="{% url 'core_home' %}">Home</a>
         </li>
-        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Serviços</a>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="{% url 'core_lista_pessoas' %}">Pessoas</a>
-            <a class="dropdown-item" href="{% url 'core_lista_veiculos' %}">Veiculos</a>
-            <a class="dropdown-item" href="{% url 'core_lista_movrotativos' %}">Rotativos</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{% url 'core_lista_mensalistas' %}">Mensalistas</a>
-            <a class="dropdown-item active" href="{% url 'core_lista_movmensalistas' %}">MovMensalistas</a>
-        </div>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="#">Logout</a>
-        </li>
+
+        {% if user.is_authenticated  %}
+
+            <li class="nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Serviços</a>
+
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'core_lista_pessoas' %}">Pessoas</a>
+                    <a class="dropdown-item" href="{% url 'core_lista_veiculos' %}">Veiculos</a>
+                    <a class="dropdown-item" href="{% url 'core_lista_movrotativos' %}">Rotativos</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'core_lista_mensalistas' %}">Mensalistas</a>
+                    <a class="dropdown-item active" href="{% url 'core_lista_movmensalistas' %}">MovMensalistas</a>
+                </div>
+                
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link disabled" href="">Ola, {{ user }}   </a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href=" {% url 'logout' %} ">Logout</a>
+            </li>
+
+        {% else %}
+
+            <li class="nav-item">
+                <a class="nav-link" href=" {% url 'login' %} ">Login</a>
+            </li>
+
+        {% endif %}
+
     </ul>
 {% endblock menu %}
 
@@ -39,6 +60,7 @@
                 <th scope="col">mensalista</th>
                 <th scope="col">dt_pgto</th>
                 <th scope="col">total</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
@@ -48,6 +70,9 @@
                 <td>{{ lista_movmensalistas.mensalista }}</td>
                 <td>{{ lista_movmensalistas.dt_pgto }}</td>
                 <td> R$ {{ lista_movmensalistas.total }}</td>
+                <td>
+                    <a href="{% url 'core_movmensalista_update' lista_movmensalistas.id %}">Editar</a>
+                </td>
               </tr>
             {% endfor %}
             </tbody>
