@@ -9,10 +9,11 @@ https://docs.djangoproject.com/en/1.9/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.9/ref/settings/
 """
-
+import django_heroku
 import os
 from decouple import config
 from dj_database_url import parse as dburl
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,7 +28,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'https://estacionamentoapp.herokuapp.com/']
 
 
 # Application definition
@@ -143,3 +144,6 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'core_home'
 
 LOGOUT_REDIRECT_URL = 'core_home'
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
