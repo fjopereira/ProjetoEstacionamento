@@ -1,8 +1,14 @@
 .footer-website{
-    bottom: 1;
-    position: absolute;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .row-space{
     margin-top: 25px;
+}
+
+.img-index{
+    width: 100%;
+    height: 100%;
 }

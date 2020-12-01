@@ -1,0 +1,77 @@
+{% extends 'website/base.html' %}
+
+{% load static %}
+  
+
+{% block menu %}
+
+  <div class="row">
+    <div class="col-12">
+      <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'website_sobre' %}">Sobre</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'website_planos' %}">Planos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'website_servicos' %}">Serviços</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'website_contato' %}">Contatos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'core_home' %}">Sistema</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+{% endblock menu %}
+
+
+{% block main %}
+
+    <div class="row row-space">
+
+        <div class="col-12">
+
+          <p>
+            Mussum Ipsum, cacilds vidis litro abertis. Quem num gosta di mim que vai caçá sua turmis! 
+            Praesent vel viverra nisi. Mauris aliquet nunc non turpis scelerisque, eget. 
+            Detraxit consequat et quo num tendi nada. Manduma pindureta quium dia nois paga.
+
+            Aenean aliquam molestie leo, vitae iaculis nisl. Mais vale um bebadis conhecidiss, 
+            que um alcoolatra anonimis. Per aumento de cachacis, eu reclamis. 
+            Delegadis gente finis, bibendum egestas augue arcu ut est.
+
+            Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis. 
+            Si num tem leite então bota uma pinga aí cumpadi! 
+            Nullam volutpat risus nec leo commodo, ut interdum diam laoreet. 
+            Sed non consequat odio. Interagi no mé, cursus quis, vehicula ac nisi.
+
+            Atirei o pau no gatis, per gatis num morreus. Si u mundo tá muito paradis? 
+            Toma um mé que o mundo vai girarzis! Cevadis im ampola pa arma uma pindureta. 
+            Quem manda na minha terra sou euzis!
+          </p>
+           
+        </div>
+
+    </div>
+
+    <div class="row row-space">
+
+      <div class="col-6">
+        <img class="img-index" src="{% static 'img/estacionamento.png' %}" alt="Estacionamento 24 horas">
+      </div>
+
+      <div class="col-6">
+        <img class="img-index" src="{% static 'img/estacionamento.png' %}" alt="Estacionamento 24 horas">
+      </div>
+
+    </div>
+
+{% endblock main %}

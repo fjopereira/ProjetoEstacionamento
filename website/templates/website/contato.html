@@ -1,0 +1,123 @@
+{% extends 'website/base.html' %}
+
+{% load static %}
+
+
+{% block menu %}
+
+  <div class="row">
+    <div class="col-12">
+      <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'website_sobre' %}">Sobre</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'website_planos' %}">Planos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'website_servicos' %}">Serviços</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'website_contato' %}">Contatos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'core_home' %}">Sistema</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+{% endblock menu %}
+
+
+{% block main %}
+
+  <div class="row">
+
+    <p>{{ mensagem }}</p>
+
+  </div>
+
+  <div class="row row-space">
+  
+    <div class="col-6">
+
+      <form method="POST">
+
+        {% csrf_token %}
+
+        <div class="form-row">
+
+          <div class="form-group col-md-12">
+
+            <label for="inputEmail4">Email</label>
+            <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email">
+
+          </div>
+
+        </div>
+
+        <div class="form-row">
+
+          <div class="form-group col-md-6">
+            <label for="inputNome">Nome</label>
+            <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="nome">
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="inputSobrenome">Sobrenome</label>
+            <input type="text" class="form-control" id="inputSobrenome" placeholder="Sobrenome" name="sobrenome">
+          </div>
+
+        </div>
+
+        <div class="form-row">
+
+          <div class="form-group col-md-12">
+            <label for="inputAddress2">Endereço</label>
+            <input type="text" class="form-control" id="inputEndereco" placeholder="Endereço" name="endereco">
+          </div>
+
+        </div>  
+
+        <div class="form-group">
+          <textarea id="mensagem_contato" cols="65" rows="10" class="form-control" name="mensagem_contato"></textarea>
+        </div>
+
+        <div class="form-group">
+
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="gridCheck" name="receber_noticias">
+            <label class="form-check-label" for="gridCheck">Receber Notícias</label>
+          </div>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+
+      </form>
+
+    </div>
+
+    <div class="col-6">
+
+      <p> 
+        1-Mussum Ipsum, cacilds vidis litro abertis. Cevadis im ampola pa arma uma pindureta. Mais vale um bebadis conhecidiss, que um alcoolatra anonimis. 
+        Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose. Quem num gosta di mé, boa gentis num é.
+
+        2-Si u mundo tá muito paradis? Toma um mé que o mundo vai girarzis! Diuretics paradis num copo é motivis de denguis. 
+        Quem num gosta di mim que vai caçá sua turmis! In elementis mé pra quem é amistosis quis leo.
+      </p>
+
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1875.61664790038!2d-43.94032429941149!3d-19.914571399334864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa699feaf7a1943%3A0x3b6c24eef787e534!2sRua%20Guaicurus%2C%20610-754%20-%20Centro%2C%20Belo%20Horizonte%20-%20MG%2C%2030111-060!5e0!3m2!1spt-BR!2sbr!4v1606310908851!5m2!1spt-BR!2sbr" 
+        width="500" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0">
+      </iframe>
+
+    </div>
+
+  </div>
+
+{% endblock main %}
