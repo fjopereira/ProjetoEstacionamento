@@ -11,12 +11,12 @@
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Serviços</a>
 
             <div class="dropdown-menu">
-                <a class="dropdown-item" href="{% url 'core_lista_pessoas' %}">Pessoas</a>
-                <a class="dropdown-item" href="{% url 'core_lista_veiculos' %}">Veiculos</a>
-                <a class="dropdown-item" href="{% url 'core_lista_movrotativos' %}">Rotativos</a>
+                <a class="dropdown-item {{ pessoa_ativo }} " href="{% url 'core_lista_pessoas' %}">Pessoas</a>
+                <a class="dropdown-item {{ veiculo_ativo }} " href="{% url 'core_lista_veiculos' %}">Veiculos</a>
+                <a class="dropdown-item {{ movrotativo_ativo }} " href="{% url 'core_lista_movrotativos' %}">Rotativos</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{% url 'core_lista_mensalistas' %}">Mensalistas</a>
-                <a class="dropdown-item" href="{% url 'core_lista_movmensalistas' %}">MovMensalistas</a>
+                <a class="dropdown-item {{ mensalista_ativo }} " href="{% url 'core_lista_mensalistas' %}">Mensalistas</a>
+                <a class="dropdown-item {{ movmensalista_ativo }} " href="{% url 'core_lista_movmensalistas' %}">MovMensalistas</a>
             </div>
 
         </li>
@@ -24,9 +24,9 @@
         <li class="nav-item">
             <a class="nav-link disabled" href="">Ola, {{ user }}   </a>
         </li>
-        
+
         <li class="nav-item">
-            <a class="nav-link" href=" {% url 'logout' %} ">Logout</a>
+            <a class="nav-link" href=" {% url 'website_home' %} ">WebSite</a>
         </li>
         
         {% if user.get_username == 'admin'  %}   
@@ -36,6 +36,10 @@
             </li>
             
         {% endif %}
+
+        <li class="nav-item">
+            <a class="nav-link" href=" {% url 'logout' %} ">Logout</a>
+        </li>
 
     {% else %}
 

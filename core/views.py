@@ -20,7 +20,7 @@ def home(request):
 def lista_pessoas(request):
     pessoas = Pessoa.objects.all()
     form = PessoaForm()
-    data = {'pessoas': pessoas, 'form': form}
+    data = {'pessoas': pessoas, 'form': form, 'pessoa_ativo': 'active' }
     return render(request, 'core/lista_pessoas.html', data)
 
 
@@ -62,7 +62,7 @@ def pessoa_delete(request, id):
 def lista_veiculos(request):
     veiculos = Veiculo.objects.all()
     form = VeiculoForm()
-    data = {'veiculos': veiculos, 'form': form}
+    data = {'veiculos': veiculos, 'form': form, 'veiculo_ativo': 'active' }
     return render(request, 'core/lista_veiculos.html', data) 
 
 
@@ -104,7 +104,7 @@ def veiculo_delete(request, id):
 def lista_movrotativos(request):
     lista_movrotativos = MovRotativo.objects.all()
     form = MovRotativoForm()
-    data = {'lista_movrotativos': lista_movrotativos, 'form': form}
+    data = {'lista_movrotativos': lista_movrotativos, 'form': form, 'movrotativo_ativo': 'active' }
     return render(request, 'core/lista_movrotativos.html', data)    
 
 
@@ -146,7 +146,7 @@ def movrotativo_delete(request, id):
 def lista_mensalistas(request):
     lista_mensalistas = Mensalista.objects.all()
     form = MensalistaForm()
-    data = {'lista_mensalistas': lista_mensalistas, 'form': form}
+    data = {'lista_mensalistas': lista_mensalistas, 'form': form, 'mensalista_ativo': 'active' }
     return render(request, 'core/lista_mensalistas.html', data) 
 
 
@@ -188,7 +188,7 @@ def mensalista_delete(request, id):
 def lista_movmensalistas(request):
     lista_movmensalistas = MovMensalista.objects.all()
     form = MovMensalistaForm()
-    data = {'lista_movmensalistas': lista_movmensalistas, 'form': form}
+    data = {'lista_movmensalistas': lista_movmensalistas, 'form': form, 'movmensalista_ativo': 'active' }
     return render(request, 'core/lista_movmensalistas.html', data) 
 
 
