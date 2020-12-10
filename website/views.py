@@ -3,11 +3,10 @@ from .models import Contato
 
 # Create your views here.
 def home(request):
-    return render(request, 'website/index.html')
+    return render(request, 'website/index.html', {'home': 'active'})
 
 
 def contato(request):
-
     mensagem = ''
     
     if request.method == 'POST':
@@ -31,18 +30,18 @@ def contato(request):
 
             mensagem = 'Contato realizado com sucesso'
 
-    return render(request, 'website/contato.html', {'mensagem': mensagem})
+    return render(request, 'website/contato.html', {'contatos': 'active', 'mensagem': mensagem })
 
 
 def servicos(request):
-    return render(request, 'website/servicos.html')
+    return render(request, 'website/servicos.html', {'servicos': 'active'})
 
 
 def planos(request):
-    return render(request, 'website/planos.html')
+    return render(request, 'website/planos.html', {'planos': 'active'})
 
 
 def sobre(request):
-    return render(request, 'website/sobre.html')    
+    return render(request, 'website/sobre.html', {'sobre': 'active'})
 
 

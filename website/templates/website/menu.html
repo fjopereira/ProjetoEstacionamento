@@ -2,19 +2,19 @@
     <div class="col-12">
         <ul class="nav nav-pills nav-fill">
             <li class="nav-item">
-                <a class="nav-link active" href="/">Home</a>
+                <a class="nav-link {{ home }}" href="{% url 'website_home' %}">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'website_sobre' %}">Sobre</a>
+                <a class="nav-link {{ sobre }}" href="{% url 'website_sobre' %}">Sobre</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'website_planos' %}">Planos</a>
+                <a class="nav-link {{ planos }}" href="{% url 'website_planos' %}">Planos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'website_servicos' %}">Serviços</a>
+                <a class="nav-link {{ servicos }}" href="{% url 'website_servicos' %}">Serviços</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'website_contato' %}">Contatos</a>
+                <a class="nav-link {{ contatos }}" href="{% url 'website_contato' %}">Contato</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'core_home' %}">Sistema</a>
