@@ -13,4 +13,15 @@ class Contato(models.Model):
         return self.nome
 
     
+class Servico(models.Model):
+    texto1 = models.TextField() 
+
+
+class Sobre(models.Model):
+    texto1 = models.TextField()   
+    texto2 = models.TextField()  
     
+
+class Plano(models.Model):
+    texto1 = models.TextField()   
+    texto2 = models.TextField()      

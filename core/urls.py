@@ -21,7 +21,9 @@ from .views import (
     veiculo_delete,
     movrotativo_delete,
     mensalista_delete,
-    movmensalista_delete
+    movmensalista_delete,
+    Pdf,
+    ExportarParaCSV
 )
 
 
@@ -51,5 +53,7 @@ urlpatterns = [
     url(r'^movmensalista-novo/$', movmensalista_novo, name='core_movmensalista_novo'),
     url(r'^movmensalista-update/(?P<id>\d+)/$', movmensalista_update, name='core_movmensalista_update'),
     url(r'^movmensalista-delete(?P<id>\d+)/$', movmensalista_delete, name='core_movmensalista_delete'),
-
+    
+    url(r'relatorio/$', Pdf.as_view(), name='relatorio_pdf'),
+    url(r'relatorio-csv/$', ExportarParaCSV.as_view(), name='relatorio_csv')
 ]

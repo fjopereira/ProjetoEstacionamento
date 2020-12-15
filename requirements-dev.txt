@@ -16,3 +16,5 @@ toml==0.10.2
 typed-ast==1.4.1
 wrapt==1.12.1
 django-bootstrap-form
+django-bootstrap-form
+xhtml2pdf

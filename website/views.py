@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Contato
+from .models import Contato, Servico, Sobre, Plano
 
 # Create your views here.
 def home(request):
@@ -33,15 +33,26 @@ def contato(request):
     return render(request, 'website/contato.html', {'contatos': 'active', 'mensagem': mensagem })
 
 
-def servicos(request):
-    return render(request, 'website/servicos.html', {'servicos': 'active'})
+def servico(request):
+    #texto = Servico.objects.filter(id=1).values('servico')
+    s = Servico.objects.get(id=1)
+    texto1 =  s.texto1
+    #print(texto)
+    return render(request, 'website/servicos.html', {'servicos': 'active', 'texto1': texto1})
 
 
-def planos(request):
-    return render(request, 'website/planos.html', {'planos': 'active'})
+def plano(request):
+    p = Plano.objects.get(id=1)
+    texto1 = p.texto1
+    texto2 = p.texto2
+    textos = {'planos': 'active', 'texto1': texto1, 'texto2': texto2}
+    return render(request, 'website/planos.html', textos)
 
 
 def sobre(request):
-    return render(request, 'website/sobre.html', {'sobre': 'active'})
-
+    s = Sobre.objects.get(id=1)
+    texto1 = s.texto1
+    texto2 = s.texto2
+    textos = {'sobre': 'active', 'texto1': texto1, 'texto2': texto2}
+    return render(request, 'website/sobre.html', textos)
 
